@@ -522,7 +522,6 @@ class App(ctk.CTk):
                     #!Mostrar el árbol actualizado e info del nodo en el text area             
                     for i in a_eliminar:
                         self.arbol_avl.eliminar(i.valor)
-                    self.plot()
                         
                     #!Mostrar el árbol actualizado e info del nodo en el text area
                     self.text_metrica.delete(0.0, tk.END)
@@ -543,6 +542,9 @@ class App(ctk.CTk):
                 self.text_ara.insert(0.0, "Se ha encontrado el nodo")
                 texto_a_mostrar = "\n".join([str(nodo.valor[12]) for nodo in encontrados])
                 self.text_ara.insert("end", texto_a_mostrar)
+                for nodo in encontrados:
+                    info = f"\nTítulo: {nodo.valor[0]}\nDepartamento: {nodo.valor[1]}\nCiudad: {nodo.valor[2]}\nTipo de Propiedad: {nodo.valor[3]}\nLatitud: {nodo.valor[4]}\nLongitud: {nodo.valor[5]}\nSuperficie Total: {nodo.valor[6]}\nSuperficie Construida: {nodo.valor[7]}\nNúmero Cuartos: {nodo.valor[8]}\nNúmero Baños: {nodo.valor[9]}\nTipo Operación: {nodo.valor[10]}\nPrecio: {nodo.valor[11]}"
+                    self.text_ara.insert("end", info)
                 
                 #Se agrega a la base el nodo encontrado
                 for nodo in encontrados:
@@ -677,6 +679,7 @@ class App(ctk.CTk):
         
     
     def plot(self):
+        print("self.arbol_avl.raiz: ", self.arbol_avl.raiz.valor)
         plot_avl_tree(self.arbol_avl.raiz)
         self.image = Image.open("avl_tree.png")
         self.image_tk = ImageTk.PhotoImage(self.image)

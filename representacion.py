@@ -19,7 +19,7 @@ def plot_avl_tree(root):
 
 def plot_tree_recursive(G, node):
     if node:
-        G.add_node(node, label=node.city, size=300, color="lightblue")
+        G.add_node(node, label=f"Ciudad {node.valor[2]} \nMétrica 1 {node.valor[12]} \nMétrica 2 {node.valor[13]}", size=300, color="lightblue")
         if node.izquierda:
             G.add_edge(node, node.izquierda)
             plot_tree_recursive(G, node.izquierda)
